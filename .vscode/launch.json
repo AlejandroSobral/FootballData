@@ -11,7 +11,7 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true,
-            "args": ["--equipo", "Vélez Sarsfield", "--show", "True"]
+            "args": ["--equipo", "Racing Club", "--show", "True"]
         }
     ]
 }

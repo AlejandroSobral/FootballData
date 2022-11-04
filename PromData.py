@@ -8,7 +8,7 @@ equipos_copas = ['Belgrano Athletic', 'Alumni', 'Rosario Athletic', 'Quilmes Ath
  'Banfield', 'Huracán', 'Tiro Federal de Rosario', 'Sportivo Barracas', 'Sportivo Balcarce', 
  'Nueva Chicago', 'Central Córdoba (R)', 'San Lorenzo de Almagro', 'San Martín de Tucumán', 
  'Estudiantes de La Plata', 'Atlanta', 'Gimnasia y Esgrima de La Plata', 'Arsenal Fútbol Club', 
- 'Vélez Sarsfield', 'Lanús', 'Tigre', 'Racing', 'Club Atlético Colón']
+ 'Vélez Sarsfield', 'Lanús', 'Tigre','Club Atlético Colón']
 
 equipos_ligas = ['Saint Andrews', 'Lomas Athletic', 'Lomas Academy', 'Belgrano Athletic', 'English High School', 'Alumni', 
                  'Quilmes', 'Porteño', 'Racing Club', 'Estudiantes de La Plata', 'Boca Juniors', 'River Plate', 'Huracán', 'Independiente', 
@@ -333,7 +333,7 @@ tabla_copas_nac = [
 ,"2018","Supercopa Argentina 2018" ,                                         "Boca Juniors"
 ,"2019","Copa de la Superliga 2019",                                         "Tigre"
 ,"2019","Copa Argentina 2019",	                                             "River Plate"
-,"2019","Trofeo de Campeones de la Superliga 2019",	                         "Racing"
+,"2019","Trofeo de Campeones de la Superliga 2019",	                         "Racing Club"
 ,"2020","Copa Diego Armando Maradona 2020 - 2021", 	                         "Boca Juniors"
 ,"2019","Supercopa Argentina 2019",                                          "River Plate"
 ,"2021","Copa de la Liga Profesional  2021",                                 "Club Atlético Colón"
