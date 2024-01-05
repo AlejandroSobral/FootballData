@@ -45,17 +45,8 @@ psg.popup('Equipo seleccionado :'+ v["equipo"])
 
 
 
-# parser = argparse.ArgumentParser()
-# parser.add_argument("--desde_anio", required=False)
-# parser.add_argument("--hasta_anio", required=False)
-# parser.add_argument("--equipo", choices = list_equipos, required=False)
-# parser.add_argument("--show", required=False)
-# args = parser.parse_args()
-
 #print("Información disponible para: ",list_equipos)
 equipo = v["equipo"]
-#hasta_anio = input("Seleccione año maximo o pulse Enter. ")
-#desde_anio = input("Seleccione año minimo o pulse Enter. ")
 hasta_anio = False
 desde_anio = False
 show = True
@@ -75,6 +66,7 @@ tabla_copas_nac = CopNac.tabla_copas_nac
 year_list = []
 data_list = []
 team_list = []
+type_list = []
 i = 0
 for element in tabla_ligas:
     if (i == 0):
@@ -86,6 +78,10 @@ for element in tabla_ligas:
         i = i + 1
         continue
     if(i == 2):
+        type_list.append(element)
+        i = i + 1
+        continue
+    if(i == 3):
         team_list.append(element)
         i = 0
         
@@ -94,6 +90,7 @@ for year in year_list:
     int_list.append(int(year))
 df_ligas = pd.DataFrame({"Anio": int_list,
                    "Competicion": data_list,
+                   "Tipo Competición": type_list,
                   "Campeón": team_list
                     })
 
@@ -101,6 +98,7 @@ df_ligas = pd.DataFrame({"Anio": int_list,
 year_list = []
 data_list = []
 team_list = []
+type_list = []
 i = 0
 for element in tabla_copas_nac:
     if (i == 0):
@@ -112,6 +110,10 @@ for element in tabla_copas_nac:
         i = i + 1
         continue
     if(i == 2):
+        type_list.append(element)
+        i = i + 1
+        continue
+    if(i == 3):
         team_list.append(element)
         i = 0
 
@@ -120,6 +122,7 @@ for year in year_list:
     int_list.append(int(year))
 df_cop_nac = pd.DataFrame({"Anio": int_list,
                    "Competicion": data_list,
+                   "Tipo Competición": type_list,
                   "Campeón": team_list
                     })
 
@@ -148,17 +151,11 @@ df_conmebol = pd.DataFrame({"Anio": int_list,
                   "Campeón": team_list
                     })
 
-if(desde_anio):
-    anio = desde_anio
-    rslt_df = df_cop_nac[df_cop_nac["Anio"] > anio]
-    print(rslt_df)
-    camps_list = rslt_df["Campeón"].unique()
-    for camp in camps_list:
-        rslt_df_2 = rslt_df[rslt_df["Campeón"] == camp]
-        if (len(rslt_df_2)>0):
-            print("El equipo", camp, "ganó",len(rslt_df_2), "Copas Nacionales desde", anio )
-        if(show):
-            print(tabulate(rslt_df_2, headers='keys', tablefmt='psql'))
+total_titulos = 0
+titulos_amateurs = 0
+titulos_profesionales = 0
+titulos_conmebol = 0
+
 
 if(equipo):
     ## CONMEBOL
@@ -167,9 +164,13 @@ if(equipo):
     camps_list = rslt_df["Campeón"].unique()
     for camp in camps_list:
         rslt_df_2 = rslt_df[rslt_df["Campeón"] == camp]
+
+        
         if (len(rslt_df_2)>0):
             print("----------------")
             print("El equipo", camp, "ganó",len(rslt_df_2), "Copas Conmebol")
+            titulos_conmebol = len(rslt_df_2)
+            total_titulos = len(rslt_df_2) + total_titulos
             if(show):
                 print("----------------")
                 print(tabulate(rslt_df_2, headers='keys', tablefmt='psql'))
@@ -181,8 +182,11 @@ if(equipo):
     for camp in camps_list:
         rslt_df_2 = rslt_df[rslt_df["Campeón"] == camp]
         if (len(rslt_df_2)>0):
+            titulos_amateurs = len(rslt_df[rslt_df["Tipo Competición"] == "Amateur"])
+            titulos_profesionales = len(rslt_df[rslt_df["Tipo Competición"] == "Profesional"]) 
             print("----------------")
             print("El equipo", camp, "ganó",len(rslt_df_2), "Copas Nacionales")
+            total_titulos = len(rslt_df_2) + total_titulos
             if(show):
                 print("----------------")
                 print(tabulate(rslt_df_2, headers='keys', tablefmt='psql'))
@@ -192,13 +196,27 @@ if(equipo):
     #print("Ligas Locales\n", rslt_df)
     camps_list = rslt_df["Campeón"].unique()
     for camp in camps_list:
+        titulos_amateurs = len(rslt_df[rslt_df["Tipo Competición"] == "Amateur"]) + titulos_amateurs
+        titulos_profesionales = len(rslt_df[rslt_df["Tipo Competición"] == "Profesional"]) + titulos_profesionales
         rslt_df_2 = rslt_df[rslt_df["Campeón"] == camp]
         if (len(rslt_df_2)>0):
             print("El equipo", camp, "ganó",len(rslt_df_2), "Ligas Locales")
+            total_titulos = len(rslt_df_2) + total_titulos
             if(show):
                 print("----------------")
                 print(tabulate(rslt_df_2, headers='keys', tablefmt='psql'))
                 #psg.popup(tabulate(rslt_df_2, headers='keys', tablefmt='psql'))
+print("\n")
+print("----------------")
 
+resultados_obj = {
+    "Total títulos Amateurs": titulos_amateurs,
+    "Total títulos Profesionales": titulos_profesionales,
+    "Total títulos Conmebol": titulos_conmebol,
+    "Total títulos": total_titulos
+}
+import json
 
+#df_resultados_prety = pd.DataFrame(resultados_obj)
+#print(df_resultados_prety)
 input("")                
