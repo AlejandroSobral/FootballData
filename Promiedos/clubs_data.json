@@ -451,6 +451,11 @@
                 "name": "Copa Republica",
                 "year": "1945",
                 "category": "Profesional"
+            },
+            {
+                "name": "Copa Argentina",
+                "year": "2023",
+                "category": "Profesional"
             }
         ],
         "int_titles": [
@@ -1215,6 +1220,11 @@
                 "name": "Trofeo de Campeones",
                 "year": "2021",
                 "category": "Profesional"
+            },
+            {
+                "name": "Trofeo de Campeones",
+                "year": "2023",
+                "category": "Profesional"
             }
         ],
         "int_titles": [
@@ -1796,6 +1806,11 @@
             {
                 "name": "Copa Argentina",
                 "year": "2018",
+                "category": "Profesional"
+            },
+            {
+                "name": "Copa de la Liga",
+                "year": "2023",
                 "category": "Profesional"
             }
         ],
