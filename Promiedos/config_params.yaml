@@ -1,8 +1,0 @@
-rest:
-  url: "https://example.org/primenumbers/v1"
-  port: 8443
-prime_numbers: [2, 3, 5, 7, 11, 13, 17, 19]
-
-web_scrap_min_index : 1
-web_scrap_max_index : 100
-web_scrap_url : "https://www.promiedos.com.ar/club="

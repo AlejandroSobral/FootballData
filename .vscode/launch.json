@@ -10,8 +10,8 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "justMyCode": true
-            //"args": ["--equipo", "Racing Club", "--show", "True"]
+            "justMyCode": true,
+            "args": ["-wc","./Promiedos"]
         }
     ]
 }

@@ -1,0 +1,4 @@
+
+web_scrap_min_index : 1
+web_scrap_max_index : 10
+web_scrap_url : "https://www.promiedos.com.ar/club="
